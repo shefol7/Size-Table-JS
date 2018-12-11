@@ -1,0 +1,12 @@
+/* CSS Document */
+
+.sizeTable tr td {
+	border: solid 1px #4F4F4F;
+	min-width: 15px;
+	padding: 3px;
+	text-align: center;
+}
+
+#errors {
+	color: red;
+}
