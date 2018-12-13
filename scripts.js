@@ -15,20 +15,19 @@ var sizeTypeSpec;
         var acryl7Lang = {'en' : 'Acryl', 'pl' : 'Acryl', 'nl' : 'Acryl', 'de' : 'Acryl', 'fr' : 'Acryl', 'es' : 'Acryl', 'it' : 'Acryl'};
         var elastane7Lang = {'en' : 'Elastane', 'pl' : 'Elastane', 'nl' : 'Elastane', 'de' : 'Elastane', 'fr' : 'Elastane', 'es' : 'Elastane', 'it' : 'Elastane'};
         var pcs7Lang = {'en' : 'PCS.', 'pl' : 'SZT.', 'nl' : 'PCS.', 'de' : 'PCS.', 'fr' : 'PCS.', 'es' : 'PCS.', 'it' : 'PCS.'};
-		var weight7Lang = {'en' : 'Weight', 'pl' : 'Gramatura', 'nl' : 'Gewicht', 'de' : 'Gewicht', 'fr' : 'Poids', 'es' : 'Peso', 'it' : 'Peso'};
+	var weight7Lang = {'en' : 'Weight', 'pl' : 'Gramatura', 'nl' : 'Gewicht', 'de' : 'Gewicht', 'fr' : 'Poids', 'es' : 'Peso', 'it' : 'Peso'};
         var cm7Lang = {'en' : 'cm', 'pl' : 'cm', 'nl' : 'cm', 'de' : 'cm', 'fr' : 'cm', 'es' : 'cm', 'it' : 'cm'};
         var all7Languages = ['de' , 'en' , 'es' , 'fr' , 'it' , 'nl' , 'pl'];
-		var plastic7Lang = {'en' : 'Plastic', 'pl' : 'Plastik', 'nl' : 'Plastic', 'de' : 'Plastic', 'fr' : 'Plastic', 'es' : 'Plastic', 'it' : 'Plastic'};
-		var viscose7Lang = {'en' : 'Viscose', 'pl' : 'Wiskoza', 'nl' : 'Viscose', 'de' : 'Viscose', 'fr' : 'Viscose', 'es' : 'Viscose', 'it' : 'Viscose'};
-		var fleece7Lang = {'en' : 'Fleece', 'pl' : 'Polar', 'nl' : 'Fleece', 'de' : 'Fleece', 'fr' : 'Fleece', 'es' : 'Fleece', 'it' : 'Fleece'};
-		var velour7Lang = {'en' : 'Velour', 'pl' : 'Welur', 'nl' : 'Velour', 'de' : 'Velour', 'fr' : 'Velour', 'es' : 'Velour', 'it' : 'Velour'};
-		var polyamide7Lang = {'en' : 'Polyamide', 'pl' : 'Poliamid', 'nl' : 'Polyamide', 'de' : 'Polyamide', 'fr' : 'Polyamide', 'es' : 'Polyamide', 'it' : 'Polyamide'};
+	var plastic7Lang = {'en' : 'Plastic', 'pl' : 'Plastik', 'nl' : 'Plastic', 'de' : 'Plastic', 'fr' : 'Plastic', 'es' : 'Plastic', 'it' : 'Plastic'};
+	var viscose7Lang = {'en' : 'Viscose', 'pl' : 'Wiskoza', 'nl' : 'Viscose', 'de' : 'Viscose', 'fr' : 'Viscose', 'es' : 'Viscose', 'it' : 'Viscose'};
+	var fleece7Lang = {'en' : 'Fleece', 'pl' : 'Polar', 'nl' : 'Fleece', 'de' : 'Fleece', 'fr' : 'Fleece', 'es' : 'Fleece', 'it' : 'Fleece'};
+	var velour7Lang = {'en' : 'Velour', 'pl' : 'Welur', 'nl' : 'Velour', 'de' : 'Velour', 'fr' : 'Velour', 'es' : 'Velour', 'it' : 'Velour'};
+	var polyamide7Lang = {'en' : 'Polyamide', 'pl' : 'Poliamid', 'nl' : 'Polyamide', 'de' : 'Polyamide', 'fr' : 'Polyamide', 'es' : 'Polyamide', 'it' : 'Polyamide'};
 
 
 
 var formularz = document.querySelector("#formularz");
 var divTabela = document.querySelector("#tabela");
-var textareaTabela = document.querySelector("#tabelaKod");
 var btn = document.querySelector("#send");
 
 btn.onclick = function(){
@@ -41,6 +40,7 @@ btn.onclick = function(){
 	var	sizeType = formularz.sizeType.value,
 		weight = formularz.weight.value,
 		
+// Fabrics		
 		cotton = formularz.cotton.value,
 		polyester = formularz.polyester.value,
 		microfibre = formularz.microfibre.value,
@@ -55,19 +55,47 @@ btn.onclick = function(){
 		
 	
 	
+// If colors sizes are not the same generate new tables
 	
+	
+	
+	
+// Protect form from incorrect data
+	
+	
+	
+		
+	
+	
+// End of protecting entry data code	
+	
+	
+	function generateDiv(){
+		for (var a = 0 ; a < all7Languages.length ; a++){
+			
+			var code;
+			code += "<div class=\"tbl\"></div><TEXTAREA class=\"txa\" cols=\"80\" rows=\"10\"></TEXTAREA>";
+			
+		}
+		
+		divTabela.innerHTML = code;
+	}
 	
 // Generate tables in all languages
 	
 	
 	if(language == "all"){
 		
+		generateDiv();
+		var newDivs = document.querySelectorAll(".tbl");
+		var	newTextAreas = document.querySelectorAll(".txa");
+		
+		
 		for (var z = 0 ; z < all7Languages.length ; z++){
 			language = all7Languages[z];
-			
-			
-			
-			
+					
+				
+
 			
 		if (sizeType == 'years'){
 			sizeTypeSpec = years7Lang[language];
@@ -80,7 +108,7 @@ btn.onclick = function(){
 	
 // Adding first tr of the size table
 	
-	codehtml += "<table class=\"sizeTable\">";
+	codehtml = "<table class=\"sizeTable\">";
 	codehtml += "<tr><td>" + sizeNames7Lang[language] + "</td>";
 	
 		for (var m = 0 ; m < sizesArray.length ; m++){
@@ -213,12 +241,16 @@ btn.onclick = function(){
 	
 	codehtml += codeFabrics;
 	
-	codehtml += "</table><br><br>";
+	codehtml += "</table>";
 			
+	newDivs[z].innerHTML = codehtml + "<br><br>";
 	
-	divTabela.innerHTML = codehtml;
-	//textareaTabela.innerHTML = codehtml;
+//textareaTabela.innerHTML = codehtml;
+
 	
+	newTextAreas[z].innerHTML = codehtml;
+		
+
 	var fabricsSum = (parseInt(cotton) + parseInt(polyester) + parseInt(microfibre) + parseInt(acryl) + parseInt(elastane) + parseInt(plastic) + parseInt(viscose) + parseInt(fleece) + parseInt(velour) + parseInt(polyamide));
 	
 	if (fabricsSum != 0 || fabricsSum != 100){
@@ -227,8 +259,8 @@ btn.onclick = function(){
 		fabricsNot100 = "Succes!";
 	}
 	
-	var divErrors = document.querySelector("#errors");
-	divErrors.innerHTML = fabricsNot100;
+	//var divErrors = document.querySelector("#errors");
+	//divErrors.innerHTML = fabricsNot100;
 			
 			
 			
@@ -246,7 +278,6 @@ btn.onclick = function(){
 	
 	
 	
-		var sizeTypeSpec;
 		if (sizeType == 'years'){
 			sizeTypeSpec = years7Lang[language];
 		} else if (sizeType == 'months') {
@@ -394,8 +425,13 @@ btn.onclick = function(){
 	
 	
 	
-	divTabela.innerHTML = codehtml;
-	textareaTabela.innerHTML = codehtml;
+	divTabela.innerHTML = "<div class=\"tbl\"></div><TEXTAREA class=\"txa\" cols=\"80\" rows=\"10\"></TEXTAREA><br><br><br>";
+		
+		var addDiv = document.querySelector(".tbl"),
+			addTextArea = document.querySelector(".txa");
+		
+	addDiv.innerHTML = codehtml;
+	addTextArea.innerHTML = codehtml;
 	
 	
 	var fabricsSum = (parseInt(cotton) + parseInt(polyester) + parseInt(microfibre) + parseInt(acryl) + parseInt(elastane) + parseInt(plastic) + parseInt(viscose) + parseInt(fleece) + parseInt(velour) + parseInt(polyamide));
